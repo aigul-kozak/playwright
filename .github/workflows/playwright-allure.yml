@@ -27,9 +27,9 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      # 4. Install browsers for Playwright
-      - name: Install Playwright Browsers
-        run: npx playwright install
+      # 4. Setup Playwright environment (browsers + system dependencies)
+      - name: Setup Playwright
+        run: microsoft/playwright-github-action@v1
 
       # 5. Install Allure CLI globally
       - name: Install Allure CLI
