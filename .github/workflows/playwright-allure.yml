@@ -1,0 +1,49 @@
+name: Playwright Tests with Allure
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      # 1. Clone repository
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # 2. Install Node.js
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+
+      # 3. Install dependancies
+      - name: Install dependencies
+        run: npm install
+
+      # 4. Install browsers for Playwright
+      - name: Install Playwright Browsers
+        run: npx playwright install
+
+      # 5. Launch tests with Allure reporter
+      - name: Run Playwright tests with Allure
+        run: |
+          npx playwright test --reporter=line,allure-playwright
+
+      # 6. Generate Allure отчет
+      - name: Generate Allure report
+        run: |
+          npx allure generate ./allure-results --clean -o ./allure-report
+
+      # 7. Publish report on gh-pages
+      - name: Deploy Allure report to gh-pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./allure-report
+          publish_branch: gh-pages
