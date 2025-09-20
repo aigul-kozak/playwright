@@ -29,7 +29,7 @@ jobs:
 
       # 4. Setup Playwright environment (browsers + system dependencies)
       - name: Setup Playwright
-        run: microsoft/playwright-github-action@v1
+        uses: microsoft/playwright-github-action@v1
 
       # 5. Install Allure CLI globally
       - name: Install Allure CLI
