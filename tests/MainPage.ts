@@ -181,7 +181,7 @@ export class MainPage {
   }
   async checkHeaderElementsVisibility() {
     this.headerElements.forEach(({ locator, name }) => {
-      test.step(`Проверка отображения элемента ${name}`, async () => {
+      test.step(`Check visibility of element ${name}`, async () => {
         await expect.soft(locator(this.page)).toBeVisible();
       });
     });
@@ -189,7 +189,7 @@ export class MainPage {
   async checkHeaderElementsText() {
     this.headerElements.forEach(({ locator, name, text }) => {
       if (text) {
-        test.step(`Проверка названия элемента ${name}`, async () => {
+        test.step(`Check name of element ${name}`, async () => {
           await expect.soft(locator(this.page)).toContainText(text);
         });
       }
@@ -198,7 +198,7 @@ export class MainPage {
   async checkHeaderElementsLinks() {
     this.headerElements.forEach(({ locator, name, attribute }) => {
       if (attribute) {
-        test.step(`Проверка атрибутов href элемента ${name}`, async () => {
+        test.step(`Check href attribute of element ${name}`, async () => {
           await expect.soft(locator(this.page)).toHaveAttribute(attribute?.type, attribute?.value);
         });
       }
@@ -206,7 +206,7 @@ export class MainPage {
   }
   async checkOtherElementsVisibility() {
     this.pageElements.forEach(({ locator, name }) => {
-      test.step(`Проверка отображения элемента ${name}`, async () => {
+      test.step(`Check visibility of element ${name}`, async () => {
         await expect.soft(locator(this.page)).toBeVisible();
       });
     });
@@ -214,7 +214,7 @@ export class MainPage {
   async checkOtherElementsText() {
     this.pageElements.forEach(({ locator, name, text }) => {
       if (text) {
-        test.step(`Проверка названия элемента ${name}`, async () => {
+        test.step(`Check name of element ${name}`, async () => {
           await expect.soft(locator(this.page)).toContainText(text);
         });
       }
@@ -223,7 +223,7 @@ export class MainPage {
   async checkOtherElementsLinks() {
     this.pageElements.forEach(({ locator, name, attribute }) => {
       if (attribute) {
-        test.step(`Проверка атрибутов href элемента ${name}`, async () => {
+        test.step(`Check href attribute of element ${name}`, async () => {
           await expect.soft(locator(this.page)).toHaveAttribute(attribute?.type, attribute?.value);
         });
       }

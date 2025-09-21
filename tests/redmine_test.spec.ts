@@ -171,40 +171,38 @@ const pageElements = [
   },
 ];
 
-test.describe('Тесты хедера главной страницы', () => {
+test.describe('Tests for Main page Header', () => {
   test.beforeEach(async ({ page }) => {
     //await page.goto('https://www.redmine.org/');
   });
-  test('Проверка отображения элементов навигации хедера', async ({ page }) => {
+  test('Check displaying Header navigation elements', async ({ page }) => {
     const mainPage = new MainPage(page);
     await mainPage.openMainPage();
     await mainPage.checkHeaderElementsVisibility();
   });
 
-  test('Проверка названий элементов навигации хедера', async ({ page }) => {
+  test('Check names of Header navigation elements', async ({ page }) => {
     const mainPage = new MainPage(page);
     await mainPage.openMainPage();
     await mainPage.checkHeaderElementsText();
   });
-  test('Проверка атрибутов href элементов навигации хедера', async ({ page }) => {
+  test('Check href attributes of Header navigation elements', async ({ page }) => {
     const mainPage = new MainPage(page);
     await mainPage.openMainPage();
     await mainPage.checkHeaderElementsLinks();
   });
-  test.describe('Тесты других элементов главной страницы', () => {
+  test.describe('Tests for Main page other elements', () => {
     test.beforeEach(async ({ page }) => {
       //await page.goto('https://www.redmine.org/');
     });
-    test('Проверка отображения заголовка страницы и ccылки Multiple projects support', async ({
+    test('Check Main page title and Multiple projects support link visibility', async ({
       page,
     }) => {
       const mainPage = new MainPage(page);
       await mainPage.openMainPage();
       await mainPage.checkOtherElementsVisibility();
     });
-    test('Проверка названий и ссылок заголовка страницы и ccылки Multiple projects support', async ({
-      page,
-    }) => {
+    test('Check Main page title and Multiple projects support name and href', async ({ page }) => {
       const mainPage = new MainPage(page);
       await mainPage.openMainPage();
       await mainPage.checkOtherElementsText();
